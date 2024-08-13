@@ -2,7 +2,10 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { act } from "react";
 
-const url_ = "http://localhost:3001";
+const localhost_ = "http://localhost:3001";
+const serverUrl_ =
+  "https://inkexpdb-h3g6dqhqh3ayhvdg.southindia-01.azurewebsites.net";
+
 const initialState = {
   selectedCategory: "",
   selectedSubCategory: "",
@@ -17,7 +20,7 @@ export const fetchPlayerState = createAsyncThunk(
   "games/fetchPlayerState",
   async (playerName) => {
     try {
-      const resp = await fetch(`${url_}/users/${playerName}`, {
+      const resp = await fetch(`${serverUrl_}/users/${playerName}`, {
         method: "get",
       });
       return playerName;
@@ -30,7 +33,7 @@ export const fetchAllGames = createAsyncThunk(
   "games/fetchAllGames",
   async () => {
     try {
-      const resp = await fetch(`${url_}/getgames`, {
+      const resp = await fetch(`${serverUrl_}/getgames`, {
         method: "get",
         headers: {
           "Content-Type": "application/json",
@@ -47,7 +50,7 @@ export const createNewGame = createAsyncThunk(
   "games/createNewGame",
   async (newGame) => {
     try {
-      const resp = await fetch(`${url_}/games`, {
+      const resp = await fetch(`${serverUrl_}/games`, {
         method: "post",
         body: JSON.stringify(newGame),
         headers: {
@@ -66,7 +69,7 @@ export const updateGameFeed = createAsyncThunk(
   "games/updateGameFeed",
   async (gameData) => {
     try {
-      const resp = await fetch(`${url_}/games/addplayer`, {
+      const resp = await fetch(`${serverUrl_}/games/addplayer`, {
         method: "post",
         body: JSON.stringify(gameData),
         headers: {
@@ -85,7 +88,7 @@ export const leavingGame = createAsyncThunk(
   async (gameData) => {
     console.log(gameData);
     try {
-      const resp = await fetch(`${url_}/games/removePlayer`, {
+      const resp = await fetch(`${serverUrl_}/games/removePlayer`, {
         method: "post",
         body: JSON.stringify(gameData),
         headers: {
@@ -104,7 +107,7 @@ export const updateTeams = createAsyncThunk(
   async (gameData) => {
     console.log(gameData);
     try {
-      const resp = await fetch(`${url_}/updateTeams`, {
+      const resp = await fetch(`${serverUrl_}/updateTeams`, {
         method: "post",
         body: JSON.stringify(gameData),
         headers: {
@@ -123,7 +126,7 @@ export const fetchQuestions = createAsyncThunk(
   "games/fetchQuestions",
   async () => {
     try {
-      const resp = await fetch(`${url_}/questions`, {
+      const resp = await fetch(`${serverUrl_}/questions`, {
         method: "get",
         headers: {
           "Content-Type": "application/json",

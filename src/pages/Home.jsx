@@ -3,7 +3,6 @@ import { Box, Typography, Container, Grid, Paper } from "@mui/material";
 import PublicIcon from "@mui/icons-material/Public";
 import CategoryIcon from "@mui/icons-material/Category";
 import TrackChangesIcon from "@mui/icons-material/TrackChanges";
-import { useStyles } from "./useStyles";
 import { useDispatch } from "react-redux";
 import { fetchAllGames } from "../features/gameSlice";
 import { socket } from "../socket";
@@ -25,7 +24,24 @@ function Home() {
   //     socket.off("allgames");
   //   };
   // }, []);
-  const classes = useStyles();
+  const classes = {
+    heroSection: {
+      position: "relative",
+      textAlign: "center",
+      padding: "100px 24px",
+      color: "#fff",
+      background: "linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)",
+      overflow: "hidden",
+      height: "200px",
+      margin: " 16px 0",
+      borderRadius: "16px",
+      fontSize: "48px",
+      fontWeight: "bolder",
+      display: "flex",
+      placeItems: "center",
+      justifyContent: "center",
+    },
+  };
   return (
     <Container maxWidth="lg">
       <div className={classes.heroSection}>Challenge your Knowledge</div>
